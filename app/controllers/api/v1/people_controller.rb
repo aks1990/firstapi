@@ -7,18 +7,15 @@ class API::V1::PeopleController < ApplicationController
 	end
 
 	def create
-		puts "========="
-		puts "hello"
-		puts "========="
-		# @people = Person.new(person_params)
+		@people = Person.new(person_params)
 
-  #   respond_to do |format|
-  #     if @people.save
-  #       format.json { render :json => @people }
-  #     else
-  #       format.json { render :json => @people.errors, status: :unprocessable_entity }
-  #     end
-  #   end
+    respond_to do |format|
+      if @people.save
+        format.json { render :json => @people }
+      else
+        format.json { render :json => @people.errors, status: :unprocessable_entity }
+      end
+    end
 	end
 
 	private
